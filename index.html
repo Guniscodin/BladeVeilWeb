@@ -7,23 +7,57 @@
     <title>BladeVeil Gacha | Forge Your Legend</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #080808;
-            --accent: #a78bfa;
+            --bg-color: #0d0d12;
+            --surface: #09090b;
+            --surface2: #111116;
             --text-main: #ffffff;
-            --text-muted: #9ca3af;
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border: rgba(255, 255, 255, 0.2);
+            --accent: #eab308;
             
             /* Rarities */
             --common: #ffffff;
-            --uncommon: #22c55e;
+            --uncommon: #4ade80;
             --rare: #3b82f6;
             --legendary: #f97316;
-            --mythic: #a855f7;
-            --divine: #0ea5e9;
-            --secret: #ec4899;
+            --mythic: #c084fc;
+            --divine: #eab308;
         }
+
+        ::selection {
+            background-color: white;
+            color: black;
+        }
+
+          /* --- Custom Scrollbar Styles --- */
+/* For Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050507; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid #050507; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) #050507;
+}
 
         html {
             scroll-behavior: smooth;
@@ -34,16 +68,14 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cinzel', serif;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        h1, h2, h3, .cinzel {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
-            font-weight: 700;
+        h1, h2, h3 {
             margin: 0;
+            text-transform: uppercase;
         }
 
         #particles-js {
@@ -54,6 +86,7 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
         }
 
         .container {
@@ -74,29 +107,29 @@
         }
 
         .hero-logo {
+            font-family: 'Cinzel Decorative', serif;
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
-            text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: white;
+            letter-spacing: 0.1em;
             margin-bottom: 10px;
-            text-shadow: 0 0 40px rgba(167, 139, 250, 0.3);
+            text-shadow: 4px 4px 0 rgba(255, 255, 255, 0.2);
         }
 
         .hero-tagline {
             font-size: clamp(1.2rem, 3vw, 2rem);
-            color: var(--accent);
+            font-weight: 900;
+            color: white;
             margin-bottom: 5px;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
         }
 
         .hero-subtitle {
             font-size: 1rem;
+            font-weight: bold;
             color: var(--text-muted);
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             margin-bottom: 60px;
-            text-transform: uppercase;
         }
 
         .btn {
@@ -104,30 +137,37 @@
             padding: 16px 40px;
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
-            color: var(--text-main);
+            font-weight: 900;
+            color: white;
             text-decoration: none;
-            border: 1px solid var(--accent);
-            background: rgba(167, 139, 250, 0.05);
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            border: 2px solid white;
+            background: transparent;
+            transition: all 0.15s ease-out;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
             cursor: pointer;
-            backdrop-filter: blur(5px);
         }
 
         .btn:hover {
-            background: rgba(167, 139, 250, 0.15);
-            box-shadow: 0 0 25px rgba(167, 139, 250, 0.6), inset 0 0 10px rgba(167, 139, 250, 0.4);
-            text-shadow: 0 0 8px #ffffff;
-            border-color: #c4b5fd;
-            transform: translateY(-2px);
+            background: white;
+            color: black;
+            box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.2);
+            transform: translate(-2px, -2px);
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0 0 0 transparent;
         }
 
         .hero-meta {
-            margin-top: 20px;
+            margin-top: 24px;
+            font-family: monospace;
             font-size: 0.85rem;
+            font-weight: bold;
             color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* Section Global */
@@ -138,19 +178,21 @@
         
         .section-title {
             text-align: center;
+            font-family: 'Cinzel Decorative', serif;
             font-size: 2.5rem;
+            font-weight: 900;
             margin-bottom: 60px;
-            color: var(--text-main);
+            color: white;
+            letter-spacing: 4px;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 80px;
             height: 2px;
-            background: var(--accent);
+            background: white;
             margin: 20px auto 0;
-            box-shadow: 0 0 10px var(--accent);
         }
 
         /* Features Section */
@@ -161,37 +203,42 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(167, 139, 250, 0.1);
+            background: var(--surface);
+            border: 1px solid var(--border);
             padding: 40px 30px;
             text-align: center;
-            border-radius: 4px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
+            transition: all 0.15s ease-out;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.9);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(167, 139, 250, 0.4);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(167, 139, 250, 0.1);
-            background: rgba(255, 255, 255, 0.04);
+            transform: translate(-4px, -4px);
+            border-color: white;
+            box-shadow: 12px 12px 0 rgba(255, 255, 255, 0.1);
+            background: var(--surface2);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            font-weight: 900;
             margin-bottom: 20px;
-            color: var(--accent);
+            color: white;
         }
 
         .feature-title {
             font-size: 1.5rem;
+            font-weight: 900;
             margin-bottom: 15px;
-            color: var(--text-main);
+            color: white;
+            letter-spacing: 2px;
         }
 
         .feature-text {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         /* Rarities Section */
@@ -199,58 +246,78 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
         }
 
         .rarity-badge {
-            padding: 15px 30px;
-            border-radius: 4px;
+            padding: 12px 24px;
             font-family: 'Cinzel', serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.03);
+            font-weight: 900;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-left: 4px solid;
-            transition: all 0.3s ease;
+            transition: all 0.15s ease-out;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8);
         }
 
         .rarity-badge:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translate(-2px, -2px);
+            background: var(--surface2);
+            border-color: white;
+            box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .r-common { border-color: var(--common); color: var(--common); text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        .r-uncommon { border-color: var(--uncommon); color: var(--uncommon); text-shadow: 0 0 10px rgba(34,197,94,0.3); }
-        .r-rare { border-color: var(--rare); color: var(--rare); text-shadow: 0 0 10px rgba(59,130,246,0.3); }
-        .r-legendary { border-color: var(--legendary); color: var(--legendary); text-shadow: 0 0 10px rgba(249,115,22,0.3); }
-        .r-mythic { border-color: var(--mythic); color: var(--mythic); text-shadow: 0 0 10px rgba(168,85,247,0.3); }
-        .r-divine { border-color: var(--divine); color: var(--divine); text-shadow: 0 0 10px rgba(14,165,233,0.3); }
-        .r-secret { border-color: var(--secret); color: var(--secret); text-shadow: 0 0 10px rgba(236,72,153,0.3); }
+        .r-common { border-left-color: var(--common); color: var(--common); }
+        .r-uncommon { border-left-color: var(--uncommon); color: var(--uncommon); }
+        .r-rare { border-left-color: var(--rare); color: var(--rare); }
+        .r-legendary { border-left-color: var(--legendary); color: var(--legendary); }
+        .r-mythic { border-left-color: var(--mythic); color: var(--mythic); }
+        .r-divine { border-left-color: var(--divine); color: var(--divine); }
+        
+        .r-secret { 
+            border-left-color: white; 
+            color: white; 
+            background: #050505;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.3);
+        }
 
         /* CTA Section */
         .cta-section {
             text-align: center;
-            background: linear-gradient(0deg, rgba(8,8,8,1) 0%, rgba(167,139,250,0.05) 50%, rgba(8,8,8,1) 100%);
+            background: var(--surface);
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
         }
 
         .cta-subtitle {
-            margin-top: 20px;
+            margin-top: 24px;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            background: var(--bg-color);
         }
 
         .footer-text {
             font-family: 'Cinzel', serif;
+            font-weight: bold;
             color: var(--text-muted);
             letter-spacing: 4px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+        }
+
+        #rarities{
+            margin: 100px;
         }
 
         /* Mobile Adjustments */
@@ -258,15 +325,14 @@
             .hero-subtitle { margin-bottom: 40px; }
             section { padding: 60px 0; }
             .section-title { font-size: 2rem; margin-bottom: 40px; }
+            .btn { font-size: 0.9rem; padding: 12px 24px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Particle Background -->
     <canvas id="particles-js"></canvas>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1 class="hero-logo">BladeVeil</h1>
@@ -278,29 +344,27 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="container">
         <h2 class="section-title">The Path of the Blade</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon cinzel">I</div>
+                <div class="feature-icon">I</div>
                 <h3 class="feature-title">THE FORGE</h3>
                 <p class="feature-text">Test your fate and roll swords ranging from common metals to secret, otherworldly artifacts.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon cinzel">II</div>
+                <div class="feature-icon">II</div>
                 <h3 class="feature-title">THE ARSENAL</h3>
                 <p class="feature-text">Collect and deploy your most powerful blades into the world to earn passive income while you rest.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon cinzel">III</div>
+                <div class="feature-icon">III</div>
                 <h3 class="feature-title">THE ASCENT</h3>
                 <p class="feature-text">Upgrade your stats, unlock intricate upgrade trees, and climb the ranks of legendary forgemasters.</p>
             </div>
         </div>
     </section>
 
-    <!-- Rarities Section -->
     <section id="rarities" class="container">
         <h2 class="section-title">Blade Rarities</h2>
         <div class="rarity-grid">
@@ -314,7 +378,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section id="download" class="cta-section">
         <div class="container">
             <h2 class="section-title">Begin Your Ascent</h2>
@@ -323,12 +386,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-text">◈ BLADEVEIL · FORGE YOUR LEGEND ◈</div>
     </footer>
 
-    <!-- Lightweight Particle System JS -->
     <script>
         const canvas = document.getElementById('particles-js');
         const ctx = canvas.getContext('2d');
@@ -348,9 +409,9 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 2;
+                this.size = Math.random() * 3 + 1;
                 this.speedY = Math.random() * 0.5 + 0.1;
-                this.opacity = Math.random() * 0.5 + 0.1;
+                this.opacity = Math.random() * 0.3 + 0.05;
             }
             
             update() {
@@ -362,16 +423,18 @@
             }
             
             draw() {
-                ctx.fillStyle = `rgba(167, 139, 250, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(Math.PI / 4); // Rotates square into a diamond
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
             }
         }
         
         function init() {
             particles = [];
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 75; i++) {
                 particles.push(new Particle());
             }
         }
